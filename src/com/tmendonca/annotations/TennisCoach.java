@@ -6,9 +6,12 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 // Coach service impl
 @Component
-@Scope("prototype")
+// add @Scope("Prototype") for new objects to be created every time the bean is called
 public class TennisCoach implements Coach{
 
     @Autowired
@@ -28,6 +31,21 @@ public class TennisCoach implements Coach{
     public TennisCoach() {
         System.out.println(">> TennisCoach: inside default constructor");
     }
+
+    // define an init method
+    @PostConstruct
+    public void doStartupStuff() {
+        System.out.println(">> TennisCoach: inside of doStartupStuff");
+    }
+
+
+    // define a destroy method
+    @PreDestroy
+    public void doCleanupStuff() {
+        System.out.println(">> TennisCoach: inside of doCleanupStuff");
+    }
+
+
 
     // define a setter method
 //    @Autowired
