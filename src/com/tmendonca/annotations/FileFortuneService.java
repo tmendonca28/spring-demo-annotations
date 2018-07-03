@@ -2,6 +2,8 @@ package com.tmendonca.annotations;
 
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -24,5 +26,15 @@ public class FileFortuneService implements FortuneService{
             fnfe.printStackTrace();
         }
         return chosenFortune;
+    }
+
+    @PostConstruct
+    public void startupFileFortuneService() {
+        System.out.println("On startup I am called");
+    }
+
+    @PreDestroy
+    public void destroyFileFortuneService() {
+        System.out.println("On destroy I am called");
     }
 }
