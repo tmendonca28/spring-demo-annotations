@@ -1,0 +1,4 @@
+Dogs are not cats.
+Cats are not dogs.
+Flies are flying in the world.
+I am working at IBM.
